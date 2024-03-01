@@ -1,0 +1,35 @@
+.tracks{
+    width: 100%;
+    margin: 8px 0;
+    background: #444;
+    height:25px;
+    display: flex;
+    align-items: center;
+}
+.tracks:hover{
+    background: #656565;
+}
+.frames{
+    border: 2px solid transparent;
+    position:relative;
+    user-select: none;
+}
+.frames:hover{
+    border: 2px solid rgba(0,255,255,0.6);
+}
+.handle_left{
+    width: 10px;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top:0; 
+    background-color: rgba(0,255,255,0.6);
+}
+.handle_right{
+    width: 10px;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top:0; 
+    background-color: rgba(0,255,255,0.6);
+}
