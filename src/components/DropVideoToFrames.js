@@ -71,6 +71,7 @@ const DragVideoToFrames = () => {
             return
         }
         if(type==='C'){
+            console.log('indexer is',indexer)
             return
         }
     }

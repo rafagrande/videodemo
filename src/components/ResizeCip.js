@@ -12,6 +12,7 @@ export default function ResizeClip({frames,layer,indexer}){
     const flag_reszie = useRef('')
     const startX = useRef('')
     const orimargin = useRef('')
+    const initial_width = useRef('')
     
     const handleDragStart = (event) => {
         const data = {
@@ -113,9 +114,12 @@ export default function ResizeClip({frames,layer,indexer}){
     const stopResize = (event)=>{
         flag_reszie.current = false    
         const clipdom = clip_handle.current
+        const cliptrack = clip_track.current
+        console.log(clip_track,clipdom);
         if(clipdom){
             const {width,height} = clipdom.getBoundingClientRect()
             clipwidth.current = width
+            //cliptrack.style.width = width + 'px'
         }
         setCanDrag(true)
     }
@@ -131,6 +135,11 @@ export default function ResizeClip({frames,layer,indexer}){
         const rh = right_handle.current
         const clip = clip_track.current
 
+        // 获取最开始的宽度和margin
+        const {width,} = clip.getBoundingClientRect()
+        // initial_width.current = width
+
+
         lh.addEventListener('mousedown',mdhandler_left,true)
         rh.addEventListener('mousedown',mdhandler,true)
 
@@ -145,7 +154,7 @@ export default function ResizeClip({frames,layer,indexer}){
         }
     },[])
     return (
-        <div key={`${layer}_${indexer}_clip`} draggable={canDrag} ref={clip_track} className="clip_track" style={{width:'400px'}}>
+        <div data-belong={`C_${layer}_${indexer}`} key={`${layer}_${indexer}_clip`} draggable={canDrag} ref={clip_track} className="clip_track" style={{width:'400px'}}>
                 <div ref={clip_handle} className='frames_wrapper'>
                     <div draggable={false} ref={left_handle} className="f_left_handle"></div>
                         {
