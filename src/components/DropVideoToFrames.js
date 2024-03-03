@@ -39,6 +39,15 @@ const DragVideoToFrames = () => {
         setData(v) 
         return
     }
+    if(type==='C'){
+        const [layer,index] = indexer.split('_')
+        const v = [...clipdata.current]
+        const _frames = v[layer]['frames']
+        v[layer]['frames'] = [..._frames.slice(index,1),...abandon,..._frames.slice(index+1)]
+        clipdata.current = v
+        setData(v) 
+        return
+    }
 
   }  
 
@@ -71,7 +80,12 @@ const DragVideoToFrames = () => {
             return
         }
         if(type==='C'){
-            console.log('indexer is',indexer)
+            const [layer,index] = indexer.split('_')
+            const v = [...clipdata.current]
+            const _frames = v[layer]['frames']
+            v[layer]['frames'] = [..._frames.slice(index,1),frames,..._frames.slice(index+1)]
+            clipdata.current = v
+            setData(v)
             return
         }
     }

@@ -115,7 +115,7 @@ export default function ResizeClip({frames,layer,indexer}){
         flag_reszie.current = false    
         const clipdom = clip_handle.current
         const cliptrack = clip_track.current
-        console.log(clip_track,clipdom);
+        //console.log(clip_track,clipdom);
         if(clipdom){
             const {width,height} = clipdom.getBoundingClientRect()
             clipwidth.current = width
@@ -134,11 +134,15 @@ export default function ResizeClip({frames,layer,indexer}){
         const lh = left_handle.current
         const rh = right_handle.current
         const clip = clip_track.current
+        const frames_dom = clip_handle.current
+        //const initdom = initial_width.current
+
 
         // 获取最开始的宽度和margin
         const {width,} = clip.getBoundingClientRect()
-        // initial_width.current = width
-
+        // const {width:initwidth,} = clip.getBoundingClientRect()
+        // initial_width.current = initwidth
+        
 
         lh.addEventListener('mousedown',mdhandler_left,true)
         rh.addEventListener('mousedown',mdhandler,true)
@@ -155,16 +159,16 @@ export default function ResizeClip({frames,layer,indexer}){
     },[])
     return (
         <div data-belong={`C_${layer}_${indexer}`} key={`${layer}_${indexer}_clip`} draggable={canDrag} ref={clip_track} className="clip_track" style={{width:'400px'}}>
-                <div ref={clip_handle} className='frames_wrapper'>
-                    <div draggable={false} ref={left_handle} className="f_left_handle"></div>
+                <div data-belong={`C_${layer}_${indexer}`} ref={clip_handle} className='frames_wrapper'>
+                    <div data-belong={`C_${layer}_${indexer}`} draggable={false} ref={left_handle} className="f_left_handle"></div>
                         {
                                     frames.length>0 && frames.map((_item,_index)=>{
                                         return (
-                                            <img draggable={false} data-belong={`L_${layer}`} key={`${layer}_${indexer}_clip_${_index}_pic`}  src={_item}></img>
+                                            <img data-belong={`C_${layer}_${indexer}`} draggable={false}  key={`${layer}_${indexer}_clip_${_index}_pic`}  src={_item}></img>
                                         )
                                     })
                         }
-                    <div draggable={false} ref={right_handle} className="f_right_handle"></div>
+                    <div data-belong={`C_${layer}_${indexer}`} draggable={false} ref={right_handle} className="f_right_handle"></div>
                 </div>
         </div>
     )
