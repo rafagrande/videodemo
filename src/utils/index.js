@@ -27,3 +27,9 @@ export default function onDropChecking(target){
     }
     return false
 }
+
+
+export function resizeTheDom(theDom,direction='left',maxWidth,minWidth){
+    // 需要通过手柄调整宽度,从左侧或者右侧去改变，
+       
+}

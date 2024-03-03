@@ -4,6 +4,7 @@ export default function Clip({frames,layer,indexer}){
     const clipref = useRef(null);
     const leftref = useRef(null);
     const rightref = useRef(null);
+    
 
     const distanceLeft = useRef('');
     const distanceRight = useRef('');

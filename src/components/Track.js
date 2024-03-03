@@ -1,6 +1,7 @@
 // layer 为tracker当前的层，数据结构中通过layer来标记当前层,dataSources为当前层所有的视频
 import React, { useRef, useEffect, useState} from 'react';
 import Clip from './Clip'
+import ResizeClip from './ResizeCip';
 import '../styles/timeline.css'
 export default function Track({layer,dataSource}){
     const {frames} = dataSource
@@ -14,7 +15,7 @@ export default function Track({layer,dataSource}){
                 frames?.length>0 && frames.map((item,index)=>{
 
                     return(
-                        <Clip frames={item} layer={layer} indexer={index}></Clip>
+                        <ResizeClip frames={item} layer={layer} indexer={index}></ResizeClip>
                         // <div key={`${layer}_${index}_clip`} data-belong={`C_${layer}_${index}`} className='frames' style={{maxWidth:'600px',overflow:'hidden',borderRadius:'6px',display:'flex',margin:'0px',padding:'0'}}>
                         //     {
                         //         item?.length>0 && item.map((_item,_index)=>{
